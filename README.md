@@ -9,6 +9,7 @@ A professional-ready template for building .NET Minimal API applications with a 
 - 🗂️ **Clean Architecture** separation:
   - `Api`, `Domain`, `Application`, `Infrastructure`, and `Tests`
 - 💾 **EF Core** with SQL Server:
+  - Package Microsoft.EntityFrameworkCore.SqlServer 
   - Sample `User` entity
   - Pre-configured `DbContext`
   - Connection string in `appsettings.Development.json`
@@ -21,6 +22,7 @@ A professional-ready template for building .NET Minimal API applications with a 
 - 🔧 **CI/CD with GitHub Actions**:
   - Build, restore, test, publish Docker image or artifacts
 
+## 🧱 Project Structure
 
 ```plaintext
 MyApiTemplate/
@@ -44,4 +46,3 @@ MyApiTemplate/
 ```
 
 
-## 🧱 Project Structure
