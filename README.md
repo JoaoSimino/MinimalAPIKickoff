@@ -21,24 +21,27 @@ A professional-ready template for building .NET Minimal API applications with a 
 - 🔧 **CI/CD with GitHub Actions**:
   - Build, restore, test, publish Docker image or artifacts
 
+
+```plaintext
 MyApiTemplate/
-├── .github/workflows/ci.yml # CI/CD pipeline
-├── docker-compose.yml # Optional DB or services
-├── Dockerfile # Container build
-├── YourApp.Api/ # Minimal API entrypoint
-│ ├── Program.cs
-│ └── Endpoints/
-├── YourApp.Domain/ # Domain models and rules
-│ └── Entities/
-├── YourApp.Application/ # Use cases and business logic
-│ └── Services/
-├── YourApp.Infrastructure/ # DB access, EF Core config
-│ ├── Data/
-│ └── Migrations/
-├── YourApp.Tests/ # Unit + Integration tests
-│ ├── Unit/
-│ └── Integration/
-└── README.md
+├── .github/workflows/ci.yml
+├── docker-compose.yml
+├── Dockerfile
+├── YourApp.Api/ # Entrypoint da API (Minimal APIs)
+│   ├── Program.cs # Configuração e bootstrap da aplicação
+│   └── Endpoints/ # Definição dos endpoints da API
+├── YourApp.Domain/ # Camada de domínio (entidades e regras de negócio)
+│   └── Entities/ # Entidades principais do domínio
+├── YourApp.Application/ # Casos de uso e lógica de aplicação
+│   └── Services/ # Serviços que orquestram as regras de negócio
+├── YourApp.Infrastructure/ # Infraestrutura de persistência e integrações
+│   ├── Data/ # Contextos e interfaces de repositórios
+│   └── Migrations/ # Arquivos de migração do EF Core
+├── YourApp.Tests/ # Testes unitários e de integração
+│   ├── Unit/ # Testes unitários
+│   └── Integration/ # Testes de integração com o sistema real
+└── README.md # Documentação do projeto
+```
 
 
 ## 🧱 Project Structure
