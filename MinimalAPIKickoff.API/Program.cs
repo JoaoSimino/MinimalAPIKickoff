@@ -6,8 +6,20 @@ using MinimalAPIKickoff.Infrastructure.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 
-builder.Services.AddDbContext<MinimalAPIKickoffContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+if (builder.Environment.IsEnvironment("Test"))
+{
+    builder.Services.AddDbContext<MinimalAPIKickoffContext>(options =>
+        options.UseInMemoryDatabase("TestDb"));
+}
+else
+{
+    builder.Services.AddDbContext<MinimalAPIKickoffContext>(options =>
+        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+}
+
+
+
+
 builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddEndpointsApiExplorer();
@@ -26,3 +38,5 @@ app.UseHttpsRedirection();
 app.MapUserEndpoints();
 
 app.Run();
+
+public partial class Program { }

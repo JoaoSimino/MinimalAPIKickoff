@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MinimalAPIKickoff.Application.Services;
+using MinimalAPIKickoff.Domain.DTOs;
 using MinimalAPIKickoff.Domain.Entities;
 using MinimalAPIKickoff.Infrastructure.Data;
 
@@ -29,8 +30,9 @@ public static class UserEndpoints
         .WithName("GetUserById")
         .WithOpenApi();
 
-        group.MapPost("/", async (User user, IUserService service) =>
+        group.MapPost("/", async (UserDto userDto, IUserService service) =>
         {
+            var user = new User().DtoToEntity(userDto);
             await service.AddAsync(user);
 
             return TypedResults.Created($"/api/User/{user.Id}", user);
