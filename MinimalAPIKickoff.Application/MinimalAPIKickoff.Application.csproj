@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MinimalAPIKickoff.Domain\MinimalAPIKickoff.Domain.csproj" />
+    <ProjectReference Include="..\MinimalAPIKickoff.Infrastructure\MinimalAPIKickoff.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
