@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using MinimalAPIKickoff.API.Endpoints;
+using MinimalAPIKickoff.API.Middlewares;
 using MinimalAPIKickoff.Application.Services;
 using MinimalAPIKickoff.Infrastructure.Data;
 
@@ -21,6 +22,10 @@ else
 
 
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddProblemDetails();
+builder.Services.AddExceptionHandler<UserExceptionHandler>();
+
+
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -34,6 +39,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseExceptionHandler();
 
 app.MapUserEndpoints();
 

@@ -5,7 +5,7 @@ A professional-ready template for building .NET Minimal API applications with a 
 
 - ✅ **.NET 8 Minimal API** with:
   - Built-in **Swagger**
-  - Custom error handling middleware using **Problem Details (RFC 7807)**
+  - Custom error handling using middleware ,  ProblemDetails (RFC 7807)
 - 🗂️ **Clean Architecture** separation:
   - `Api`, `Domain`, `Application`, `Infrastructure`, and `Tests`
 - 💾 **EF Core** with SQL Server:
