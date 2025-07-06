@@ -27,13 +27,13 @@ jobs:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore MinimalAPIKickoff.sln
 
       - name: Build solution
-        run: dotnet build --no-restore --configuration Release
+        run: dotnet build MinimalAPIKickoff.sln --configuration Release --no-restore
 
       - name: Run tests
-        run: dotnet test --no-build --verbosity normal
+        run: dotnet test MinimalAPIKickoff.sln --configuration Release --no-build --verbosity normal
 
       - name: Create Release Version Tag
         id: tag
