@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using MinimalAPIKickoff.Application.Exceptions;
+using Serilog;
 
 namespace MinimalAPIKickoff.API.Middlewares;
 
@@ -21,6 +22,8 @@ public class UserExceptionHandler : IExceptionHandler
 
         httpContext.Response.StatusCode = problemDetails.Status.Value;
         await httpContext.Response.WriteAsJsonAsync(problemDetails);
+
+        Log.Error("Houve um problema na criação do Usuario!");
         return true;
     }
 }

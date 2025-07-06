@@ -3,6 +3,7 @@ using MinimalAPIKickoff.Application.Services;
 using MinimalAPIKickoff.Domain.DTOs;
 using MinimalAPIKickoff.Domain.Entities;
 using MinimalAPIKickoff.Infrastructure.Data;
+using Serilog;
 
 namespace MinimalAPIKickoff.API.Endpoints;
 
@@ -15,7 +16,7 @@ public static class UserEndpoints
         group.MapGet("/", async (IUserService service) =>
         {
             var listaDeUsuarios = await service.GetAllAsync();
-            //Logar aqui
+            
             return listaDeUsuarios;
         })
         .WithName("GetAllUsers")
@@ -24,7 +25,8 @@ public static class UserEndpoints
         group.MapGet("/{id}", async (Guid id, IUserService service) =>
         {
             var user = await service.GetByIdAsync(id);
-            //Logar aqui
+
+            Log.Information("Consulta ao usuario {user} foi efetuada no sistema!", user.Name);
             return user;
         })
         .WithName("GetUserById")
@@ -35,6 +37,7 @@ public static class UserEndpoints
             var user = new User().DtoToEntity(userDto);
             await service.AddAsync(user);
 
+            Log.Information("Usuario {id}:{user} cadastrado com sucesso!", user.Id, user.Name);
             return TypedResults.Created($"/api/User/{user.Id}", user);
         })
         .WithName("CreateUser")
