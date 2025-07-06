@@ -12,6 +12,10 @@ jobs:
   build-test-release:
     runs-on: self-hosted
 
+    env:
+      DOTNET_VERSION: '8.0.x'
+      ASPNETCORE_ENVIRONMENT: 'Test' 
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
