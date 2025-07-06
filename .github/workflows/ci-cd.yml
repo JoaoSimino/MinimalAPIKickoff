@@ -25,6 +25,7 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
+          install-dir: C:\dotnet
 
       - name: Restore dependencies
         run: dotnet restore MinimalAPIKickoff.sln
