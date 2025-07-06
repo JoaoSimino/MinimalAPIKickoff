@@ -3,30 +3,19 @@
 name: CI/CD Pipeline
 
 on:
-  push: 
-    branches:
-      - main
+  push:
+    branches: [ main ]
   pull_request:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
   build-test-release:
     runs-on: self-hosted
 
-    env:
-      DOTNET_VERSION: '8.0.x'
-
     steps:
-      - name: Check code
+      - name: Checkout code
         uses: actions/checkout@v3
-
-      - name: Setup .NET SDK
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: ${{ env.DOTNET_VERSION }}
-          dotnet-install-dir: C:\dotnet
-
+      # o ambiente DOTNET ja deve estar instalado na maquina host que estara rodando os jobs!
       - name: Restore dependencies
         run: dotnet restore MinimalAPIKickoff.sln
 
@@ -35,4 +24,5 @@ jobs:
 
       - name: Run tests
         run: dotnet test MinimalAPIKickoff.sln --configuration Release --no-build --verbosity normal
+
 
