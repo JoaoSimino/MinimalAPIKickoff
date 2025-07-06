@@ -43,6 +43,5 @@ public static class UserEndpoints
         .WithName("CreateUser")
         .WithOpenApi();
 
-
     }
 }
