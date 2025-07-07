@@ -34,7 +34,7 @@ jobs:
 
       - name: Archive package
         run: Compress-Archive -Path ./publish/* -DestinationPath ./MinimalAPIKickoff.zip
-        shell: pwsh  
+        shell: powershell  
 
       - name: Create Release Version Tag
         id: tag
